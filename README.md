@@ -1,7 +1,7 @@
 # Workshop Booking Schedule
 
 Aplikasi web untuk mencatat dan mengelola jadwal servis bengkel (data simulasi).  
-Project Lab TypeScript — **Nomor Absen 10**.
+Project Lab TypeScript — **Damar FAtihatul-Nomor Absen 10**.
 
 ## Ringkasan
 Aplikasi ini membantu admin/kasir mencatat booking servis tanpa bentrok slot. Slot dihitung dari kombinasi **tanggal + jam mulai**. Sistem menolak booking baru atau hasil edit yang memakai slot aktif yang sama.
