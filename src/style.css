@@ -1,0 +1,100 @@
+:root {
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --surface-2: #e5e7eb;
+  --text: #111111;
+  --muted: #4b5563;
+  --border: #d1d5db;
+  --primary: #111111;
+  --primary-2: #111111;
+  --ok: #374151;
+  --warn: #4b5563;
+  --danger: #111111;
+  --radius: 12px;
+  font: 16px/1.5 system-ui, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+#app { max-width: 1100px; margin: 0 auto; padding: clamp(12px, 3vw, 20px); width: 100%; }
+h1, h2, h3 { margin: 0 0 8px; line-height: 1.2; overflow-wrap: anywhere; }
+h1 { font-size: clamp(1.35rem, 4vw, 1.6rem); }
+.muted { color: var(--muted); font-size: 0.92rem; }
+
+.header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 16px; }
+.header h1 { color: #000000; }
+.header .muted { color: #111111; }
+.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; width: 100%; }
+.card { background: #e5e7eb; border: 1px solid #cbd5e1; border-radius: var(--radius); padding: clamp(10px, 2vw, 12px); box-shadow: 0 2px 8px rgba(107, 114, 128, 0.25); min-width: 0; }
+.summary .card strong { color: #000000; }
+.card strong { display: block; font-size: clamp(1.15rem, 3.5vw, 1.4rem); }
+.card small { color: var(--muted); }
+
+.layout { display: grid; grid-template-columns: minmax(280px, 340px) minmax(0, 1fr); gap: 16px; align-items: start; }
+.layout > * { min-width: 0; }
+form label { display: block; font-size: 0.9rem; margin: 8px 0 2px; color: var(--muted); }
+input, select, textarea, button {
+  font: inherit; color: var(--text); background: #ffffff;
+  border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; width: 100%; max-width: 100%; min-height: 44px;
+}
+input:focus, select:focus, textarea:focus, button:focus-visible {
+  outline: 2px solid var(--primary); outline-offset: 1px;
+}
+textarea { resize: vertical; min-height: 72px; }
+.row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+button { cursor: pointer; width: auto; background: var(--surface-2); transition: filter .15s, transform .15s; }
+button:hover { filter: brightness(1.12); }
+button.primary { background: #111111; color: #ffffff; border-color: transparent; font-weight: 700; }
+button.danger { color: #111111; border-color: #9ca3af; background: #d1d5db; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.toolbar > * { width: auto; flex: 1 1 150px; min-width: 0; }
+.toolbar .search { flex: 2 1 220px; }
+
+.list { display: grid; gap: 10px; }
+.booking { background: #e5e7eb; border: 1px solid #cbd5e1; border-radius: var(--radius); padding: 12px; box-shadow: 0 2px 8px rgba(107, 114, 128, 0.2); min-width: 0; }
+.booking-head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
+.booking-head > div { min-width: 0; flex: 1 1 220px; }
+.booking h3 { font-size: 1rem; margin: 0; color: #000000; }
+.meta { color: var(--muted); font-size: 0.9rem; margin: 4px 0 8px; overflow-wrap: anywhere; }
+.badge { font-size: 0.78rem; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); white-space: nowrap; align-self: flex-start; }
+.badge.terjadwal, .badge.dikerjakan, .badge.selesai, .badge.dibatalkan {
+  color: #111111; border-color: #9ca3af; background: #f9fafb;
+}
+.booking-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.booking-actions button { font-size: 0.85rem; padding: 8px 10px; min-height: 38px; }
+
+.state { padding: 16px; border: 1px dashed var(--border); border-radius: var(--radius); color: var(--muted); text-align: center; }
+.state.error { color: #111111; border-color: #9ca3af; }
+.state.loading { color: #374151; }
+.banner { padding: 8px 10px; border-radius: 8px; margin-bottom: 10px; font-size: 0.92rem; }
+.banner.error { background: #e5e7eb; color: #111111; border: 1px solid #9ca3af; }
+.banner.ok { background: #f3f4f6; color: #111111; border: 1px solid #9ca3af; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .actions button { flex: 1 1 140px; }
+  .booking-actions button { flex: 1 1 calc(50% - 6px); }
+}
+@media (max-width: 480px) {
+  .row, .summary { grid-template-columns: 1fr; }
+  .toolbar > * { flex: 1 1 100%; }
+  .actions button, .booking-actions button { flex-basis: 100%; }
+  .booking-head { flex-direction: column; }
+  .badge { white-space: normal; }
+}
+@media (max-width: 360px) {
+  #app { padding: 10px; }
+  .card, .booking { padding: 10px; }
+  h2 { font-size: 1.05rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
